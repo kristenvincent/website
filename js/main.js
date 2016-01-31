@@ -55,8 +55,10 @@ function cityInfo() {
 
 
 //Start of debug exercise
+//Creating a function to add a column to the table
 function addColumns(){
-	var cityPopulation = [
+	//cityPopulation needs to be inside this function, too, to use it
+	cityPopulation = [
 		{	
 			city: 'Green Bay',
 			population: 104057
@@ -79,14 +81,16 @@ function addColumns(){
 
 	];
 
-    
+    //a function is created, which will do the same thing to each row in the table
     $('tr').each(function(i){
 
     	if (i == 0){
 
     		$(this).append('<th>City Size</th>');
     	} else {
-
+//CITY SIZE NEEDS TO BE SET TO SOMETHING
+//HOW CAN IT BE IF/ELSE IF WE NEED BOTH?
+//FUNCTION BY .EACH NOT DEFINED
     		var citySize;
 
     		if (cityPopulation[i-1].population < 100000){
@@ -104,12 +108,15 @@ function addColumns(){
     });
 };
 
+//A function called addEvents is created
 function addEvents(){
-
+	//When the user mouses over the table, a function is written to perform a task
 	$('#table').mouseover(function(){
-		
+//FUNCITON BY.MOUSEOVER NOT DEFINED
+//WHAT DOES 'RGB(' DO?
+		//A variable called color is set to 
 		var color = "rgb(";
-
+		//A loop is created to add a random color to the table when moused over
 		for (var i=0; i<3; i++){
 
 			var random = Math.round(Math.random() * 255);
@@ -126,12 +133,12 @@ function addEvents(){
 
 		$(this).css('color', color);
 	});
-
+	//another function is created within the addEvents function
 	function clickme(){
-
+		//this alert will be visible when the function is called
 		alert('Hey, you clicked me!');
 	};
-
+	//The above alert is called when the table is clicked
 	$('table').on('click', clickme);
 };
 
