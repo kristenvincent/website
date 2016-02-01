@@ -83,27 +83,27 @@ function addColumns(){
 
     //a function is created, which will do the same thing to each row in the table
     $('tr').each(function(i){
-
+    	//if an row in the table is the 0 position, 
     	if (i == 0){
-
+    		//add City Size to the header
     		$(this).append('<th>City Size</th>');
     	} else {
-//CITY SIZE NEEDS TO BE SET TO SOMETHING
-//HOW CAN IT BE IF/ELSE IF WE NEED BOTH?
-//FUNCTION BY .EACH NOT DEFINED
+
+    		//if a row is not the 0 position, a variable called citySize is created
     		var citySize;
 
     		if (cityPopulation[i-1].population < 100000){
-    			citySize = 'Small';
-
+    			citySize = 'Small';		
+    			
     		} else if (cityPopulation[i-1].population < 500000){
-    			citysize = 'Medium';
-
+    			citySize = 'Medium';
+    	
     		} else {
     			citySize = 'Large';
+    		
     		};
-
-    		$(this).append('<td' + citySize + '</td>');
+    		//attach the value related to the respective citySize variable to the data row of that element in the table
+    		$(this).append('<td>' + citySize + '</td>');
     	};
     });
 };
@@ -111,9 +111,7 @@ function addColumns(){
 //A function called addEvents is created
 function addEvents(){
 	//When the user mouses over the table, a function is written to perform a task
-	$('#table').mouseover(function(){
-//FUNCITON BY.MOUSEOVER NOT DEFINED
-//WHAT DOES 'RGB(' DO?
+	$('#mydiv').mouseover(function(){
 		//A variable called color is set to 
 		var color = "rgb(";
 		//A loop is created to add a random color to the table when moused over
@@ -121,7 +119,7 @@ function addEvents(){
 
 			var random = Math.round(Math.random() * 255);
 
-			color += "random";
+			color += random;
 
 			if (i<2){
 				color += ",";
