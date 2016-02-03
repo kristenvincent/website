@@ -6,6 +6,8 @@ function initialize() {
 	cityInfo();
 	addColumns();
 	addEvents();
+	addData();
+	debugAjax();
 };
 
 //funciton to make a table of the four cities and their populations
@@ -144,6 +146,41 @@ function addEvents(){
 	//The on method is used.  The first parameter is the click property, and upon click, the called clickme function is performed.
 	$('table').on('click', clickme);
 };
+
+//A function called addData is created to add data to the page.
+function addData(){
+	//ajax method with jQuery
+	$.ajax("data/madison.geojson", {
+		dataType: "json",
+		success: callback
+	});
+	console.log(response);
+};
+
+//a callback function is defined
+function callback(response){
+	console.log(response);
+};
+
+
+//Start of Module 3 Activity debugging
+function debugAjax(){
+	console.log("hello");
+	var mydata;
+
+	$.ajax("data/madison.geojson", {
+		dataType: "json",
+		success: function(response){
+			mydata = response;
+			console.log(mydata);
+		}	
+	});
+	
+	//Here we add a new HTML element br (line break)
+	//$('#mydiv').append('<br>GeoJSON data:</br>' + JSON.stringify(mydata));
+	
+};
+
 
 //after the document has loaded, call function initialize
 $(document).ready(initialize);
