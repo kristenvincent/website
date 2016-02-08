@@ -6,7 +6,6 @@ function initialize() {
 	cityInfo();
 	addColumns();
 	addEvents();
-	addData();
 	debugAjax();
 };
 
@@ -147,45 +146,29 @@ function addEvents(){
 	$('table').on('click', clickme);
 };
 
-//Module 3 Activity
-//A function called addData is created to add data to the page.
-function addData(){
-	//ajax method with jQuery
-	$.ajax("data/MegaCities.geojson", {
-		//the data type of our data is json
-		dataType: "json",
-		//if the request is a success, the function called callback will be called
-		success: callback
-	});
-	//this console.log is outside the callback function, so the data will not be accessed
-	//console.log(response);
-};
 
-//a callback function is defined (called above if request is a success)
-function callback(response){
-	//this console.log will print data to console
-	console.log(JSON.stringify(response));
-};
-
-
-//Start of Module 3 Activity debugging
-//a debugAjax funciton is defined
+//Start of Module 3 Activity/debugging 
+//a debugAjax funciton is defined which will be used to add data
 function debugAjax(){
 	//a variable called mydata is created	
 	var mydata;
 	//jQuery ajax method is written
 	$.ajax("data/MegaCities.geojson", {
-		//the data type is json
+		//the data type of our data is json
 		dataType: "json",
 		//if the request is successful, a funciton containing the response will be defined
 		success: function(response){
 			//the mydata variable created above will be set to response
 			mydata = response;
-			//the GeoJSON data: string (followed by a line break) and oura data as a string will be appended
+			//the GeoJSON data: string (followed by a line break) and our data as a string will be appended
 			//to mydiv
 			$(mydiv).append('<br>GeoJSON data:</br>' + JSON.stringify(mydata));
+			//this console.log will print data to the console because it is inside the callback function
+			console.log(JSON.stringify(response));
 		}
 	});
+	//this console.log is outside the callback function, so the data will not be accessed
+	console.log(response);
 };
 
 //after the document has loaded, call function initialize
